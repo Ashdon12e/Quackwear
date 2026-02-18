@@ -5,7 +5,6 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>QuackWear</title>
 <style>
-  /* Reset */
   * {margin:0; padding:0; box-sizing:border-box;}
 
   body {
@@ -13,16 +12,14 @@
     background: #0a0a0a;
     color: #fff;
     display: flex;
-    justify-content: center;
-    align-items: flex-start;
+    flex-direction: column;
+    align-items: center;
     height: 100vh;
-    text-align: center;
     overflow: hidden;
     position: relative;
-    padding-top: 80px;
   }
 
-  /* Subtle duck watermark behind everything */
+  /* Subtle duck watermark */
   body::before {
     content: '';
     position: absolute;
@@ -37,32 +34,32 @@
     pointer-events: none;
   }
 
-  .container {
-    max-width: 600px;
-    z-index: 1;
+  .logo-container {
+    width: 100%;
     display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 20px;
-  }
-
-  /* Animations */
-  @keyframes fadeUp {
-    0% {opacity:0; transform: translateY(20px);}
-    100% {opacity:1; transform: translateY(0);}
+    justify-content: center;
+    padding: 40px 0 20px 0;
   }
 
   .logo {
-    width: 120px;
-    margin-bottom: 20px;
+    width: 180px;
     filter: brightness(0) invert(1);
-    animation: fadeUp 1s ease forwards;
+    animation: fadeDown 1s ease forwards;
+  }
+
+  .center-content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    gap: 20px;
   }
 
   h1 {
     font-size: 6vw;
     letter-spacing: 0.5em;
-    margin-bottom: 20px;
     opacity: 0;
     animation: fadeUp 1s ease forwards;
     animation-delay: 0.5s;
@@ -77,26 +74,40 @@
 
   .coming {
     font-size: 0.9rem;
-    opacity: 0;
     letter-spacing: 0.2em;
+    opacity: 0;
     animation: fadeUp 1s ease forwards;
     animation-delay: 1.5s;
   }
 
-  /* Responsive */
+  @keyframes fadeUp {
+    0% {opacity:0; transform: translateY(20px);}
+    100% {opacity:1; transform: translateY(0);}
+  }
+
+  @keyframes fadeDown {
+    0% {opacity:0; transform: translateY(-20px);}
+    100% {opacity:1; transform: translateY(0);}
+  }
+
   @media (max-width: 600px) {
+    .logo {width: 120px;}
     h1 {font-size: 12vw; letter-spacing: 0.2em;}
     .tagline {font-size: 1rem;}
-    .logo {width: 80px; margin-bottom: 15px;}
   }
 </style>
 </head>
 <body>
-  <div class="container">
+
+  <div class="logo-container">
     <img src="QW.png" alt="QuackWear Logo" class="logo">
+  </div>
+
+  <div class="center-content">
     <h1>QUACKWEAR</h1>
     <div class="tagline">Performance Duckwear</div>
     <div class="coming">COMING SOON</div>
   </div>
+
 </body>
 </html>
