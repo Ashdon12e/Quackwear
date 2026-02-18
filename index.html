@@ -5,6 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>QuackWear</title>
 <style>
+  /* Reset */
   * {margin:0; padding:0; box-sizing:border-box;}
 
   body {
@@ -20,14 +21,17 @@
     position: relative;
   }
 
-  /* Subtle duck watermark */
+  /* Subtle duck watermark behind text */
   body::before {
-    content: '🦆';
-    font-size: 30vw;
-    opacity: 0.03;
+    content: '';
     position: absolute;
     top: 50%;
     left: 50%;
+    width: 60vw;
+    height: 60vw;
+    background: url('QW.png') no-repeat center center;
+    background-size: contain;
+    opacity: 0.03;
     transform: translate(-50%, -50%);
     pointer-events: none;
   }
@@ -36,21 +40,27 @@
     max-width: 600px;
     z-index: 1;
     padding: 20px;
-    animation: fadeIn 2s ease;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .logo {
+    width: 120px;
+    margin-bottom: 20px;
+    filter: brightness(0) invert(1); /* Makes black logo visible on dark background */
   }
 
   h1 {
     font-size: 6vw;
     letter-spacing: 0.5em;
     margin-bottom: 20px;
-    animation: fadeInUp 1.5s ease forwards;
   }
 
   .tagline {
     font-size: 1.2rem;
     opacity: 0.7;
     margin-bottom: 40px;
-    animation: fadeInUp 2s ease forwards;
   }
 
   .coming {
@@ -58,60 +68,46 @@
     opacity: 0.5;
     margin-bottom: 40px;
     letter-spacing: 0.2em;
-    animation: fadeInUp 2.5s ease forwards;
   }
 
-  .socials {
-    margin-top: 20px;
+  .social-icons {
     display: flex;
     justify-content: center;
     gap: 20px;
-    animation: fadeInUp 3s ease forwards;
   }
 
-  .socials a {
-    color: #fff;
-    font-size: 1.5rem;
-    transition: all 0.3s ease;
-    text-decoration: none;
+  .social-icons img {
+    width: 30px;
+    transition: transform 0.3s;
   }
 
-  .socials a:hover {
+  .social-icons img:hover {
     transform: scale(1.2);
-    color: #ffd700;
   }
 
-  @keyframes fadeIn {
-    from {opacity:0;} 
-    to {opacity:1;}
-  }
-
-  @keyframes fadeInUp {
-    from {opacity:0; transform: translateY(20px);}
-    to {opacity:1; transform: translateY(0);}
-  }
-
+  /* Responsive */
   @media (max-width: 600px) {
     h1 {font-size: 12vw; letter-spacing: 0.2em;}
     .tagline {font-size: 1rem;}
+    .logo {width: 80px; margin-bottom: 15px;}
+    .social-icons img {width: 25px;}
   }
 </style>
 </head>
 <body>
   <div class="container">
+    <img src="QW.png" alt="QuackWear Logo" class="logo">
     <h1>QUACKWEAR</h1>
-    <div class="tagline">Premium Duckwear Coming Your Way</div>
-    <div class="coming">LAUNCHING SOON</div>
+    <div class="tagline">Performance Duckwear</div>
+    <div class="coming">COMING SOON</div>
 
-    <!-- Social icons -->
-    <div class="socials">
-      <a href="https://instagram.com/" target="_blank">📸</a>
-      <a href="https://tiktok.com/" target="_blank">🎵</a>
-      <a href="https://twitter.com/" target="_blank">🐦</a>
-    </div>
-
-    <div style="margin-top:50px; font-size:0.8rem; opacity:0.4;">
-      EST. 2026
+    <div class="social-icons">
+      <a href="https://instagram.com/quackwear" target="_blank">
+        <img src="instagram.svg" alt="Instagram">
+      </a>
+      <a href="https://x.com/quackwear" target="_blank">
+        <img src="x.svg" alt="X">
+      </a>
     </div>
   </div>
 </body>
