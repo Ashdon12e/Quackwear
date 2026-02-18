@@ -14,14 +14,15 @@
     color: #fff;
     display: flex;
     justify-content: center;
-    align-items: center;
+    align-items: flex-start;
     height: 100vh;
     text-align: center;
     overflow: hidden;
     position: relative;
+    padding-top: 80px;
   }
 
-  /* Subtle duck watermark behind text */
+  /* Subtle duck watermark behind everything */
   body::before {
     content: '';
     position: absolute;
@@ -39,50 +40,47 @@
   .container {
     max-width: 600px;
     z-index: 1;
-    padding: 20px;
     display: flex;
     flex-direction: column;
     align-items: center;
+    gap: 20px;
+  }
+
+  /* Animations */
+  @keyframes fadeUp {
+    0% {opacity:0; transform: translateY(20px);}
+    100% {opacity:1; transform: translateY(0);}
   }
 
   .logo {
     width: 120px;
     margin-bottom: 20px;
-    filter: brightness(0) invert(1); /* Makes black logo visible on dark background */
+    filter: brightness(0) invert(1);
+    animation: fadeUp 1s ease forwards;
   }
 
   h1 {
     font-size: 6vw;
     letter-spacing: 0.5em;
     margin-bottom: 20px;
+    opacity: 0;
+    animation: fadeUp 1s ease forwards;
+    animation-delay: 0.5s;
   }
 
   .tagline {
     font-size: 1.2rem;
-    opacity: 0.7;
-    margin-bottom: 40px;
+    opacity: 0;
+    animation: fadeUp 1s ease forwards;
+    animation-delay: 1s;
   }
 
   .coming {
     font-size: 0.9rem;
-    opacity: 0.5;
-    margin-bottom: 40px;
+    opacity: 0;
     letter-spacing: 0.2em;
-  }
-
-  .social-icons {
-    display: flex;
-    justify-content: center;
-    gap: 20px;
-  }
-
-  .social-icons img {
-    width: 30px;
-    transition: transform 0.3s;
-  }
-
-  .social-icons img:hover {
-    transform: scale(1.2);
+    animation: fadeUp 1s ease forwards;
+    animation-delay: 1.5s;
   }
 
   /* Responsive */
@@ -90,7 +88,6 @@
     h1 {font-size: 12vw; letter-spacing: 0.2em;}
     .tagline {font-size: 1rem;}
     .logo {width: 80px; margin-bottom: 15px;}
-    .social-icons img {width: 25px;}
   }
 </style>
 </head>
@@ -100,15 +97,6 @@
     <h1>QUACKWEAR</h1>
     <div class="tagline">Performance Duckwear</div>
     <div class="coming">COMING SOON</div>
-
-    <div class="social-icons">
-      <a href="https://instagram.com/quackwear" target="_blank">
-        <img src="instagram.svg" alt="Instagram">
-      </a>
-      <a href="https://x.com/quackwear" target="_blank">
-        <img src="x.svg" alt="X">
-      </a>
-    </div>
   </div>
 </body>
 </html>
